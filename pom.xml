@@ -10,7 +10,14 @@
     <name>springboot-demo</name>
     <packaging>pom</packaging>
 
-    <description>Demo project for Spring Boot</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <description>高版本springboot demo</description>
 
     <modules>
         <module>springboot-idempotent</module>
