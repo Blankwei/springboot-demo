@@ -7,3 +7,5 @@ CREATE TABLE `sys_user`(
     `real_name` VARCHAR (50) NOT NULL DEFAULT '' COMMENT 'realName',
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '`sys_user`';
+
+alter table sys_user add unique unique_realName(real_name);
