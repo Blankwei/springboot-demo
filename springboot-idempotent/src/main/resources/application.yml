@@ -37,8 +37,6 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
-    timeout: 10000ms
-
 
 # 开启控制台的sql显示
 logging:
