@@ -2,7 +2,9 @@ package com.savoidage.springbootidempotent.demo.controller;
 
 import com.savoidage.springbootidempotent.demo.entity.SysUser;
 import com.savoidage.springbootidempotent.demo.service.SysUserService;
+import com.savoidage.springbootidempotent.demo.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +20,17 @@ public class SysUserController {
 
     @Autowired
     private SysUserService sysUserService;
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @GetMapping(value = "/test")
+    private String testRedis(@RequestParam("redisValue") String redisValue){
+        if(!StringUtils.isEmpty(redisValue)){
+            redisUtils.set("test",redisValue,60L);
+        }
+        return "";
+    }
 
     /**
      * 查询用户信息 restful get
