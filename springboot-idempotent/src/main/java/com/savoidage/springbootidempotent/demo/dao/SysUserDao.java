@@ -16,4 +16,10 @@ public interface SysUserDao {
     int insertList(@Param("pojos") List<SysUser> pojo);
 
     int update(@Param("pojo") SysUser pojo);
+
+    SysUser findOne(Integer id);
+
+    List<SysUser> findList();
+
+    int delete(Integer id);
 }

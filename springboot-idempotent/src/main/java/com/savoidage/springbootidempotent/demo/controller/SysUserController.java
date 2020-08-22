@@ -2,7 +2,6 @@ package com.savoidage.springbootidempotent.demo.controller;
 
 import com.savoidage.springbootidempotent.demo.entity.SysUser;
 import com.savoidage.springbootidempotent.demo.service.SysUserService;
-import org.graalvm.compiler.nodes.extended.ValueAnchorNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +26,7 @@ public class SysUserController {
      */
     @GetMapping(value = "/sysUser/{id}")
     public SysUser findOne(@PathVariable("id") Integer id){
-
-        return null;
+        return sysUserService.findOne(id);
     }
 
     /**
@@ -37,8 +35,7 @@ public class SysUserController {
      */
     @GetMapping(value = "/sysUser")
     public List<SysUser> findList(){
-
-        return null;
+        return sysUserService.findList();
     }
 
     /**
@@ -48,8 +45,8 @@ public class SysUserController {
      */
     @PostMapping(value = "/sysUser")
     public String saveSysUser(@RequestBody SysUser sysUser){
-
-        return "";
+        int insert = sysUserService.insert(sysUser);
+        return insert > 0 ? "success":"failed";
     }
 
     /**
@@ -59,8 +56,8 @@ public class SysUserController {
      */
     @PutMapping(value = "/sysUser")
     public String updateSysUser(@RequestBody SysUser sysUser){
-
-        return null;
+        int update = sysUserService.update(sysUser);
+        return update > 0 ? "success":"failed";
     }
 
     /**
@@ -70,8 +67,8 @@ public class SysUserController {
      */
     @DeleteMapping(value = "/sysUser/{id}")
     public String deleteSysUser(@PathVariable("id") Integer id){
-
-        return "";
+        int delete = sysUserService.delete(id);
+        return delete > 0 ? "success":"failed";
     }
 
 }

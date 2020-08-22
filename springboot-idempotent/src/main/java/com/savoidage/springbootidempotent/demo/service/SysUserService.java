@@ -13,4 +13,10 @@ public interface SysUserService{
     int insertList(List<SysUser> pojos);
 
     int update(SysUser pojo);
+
+    SysUser findOne(Integer id);
+
+    List<SysUser> findList();
+
+    int delete(Integer id);
 }

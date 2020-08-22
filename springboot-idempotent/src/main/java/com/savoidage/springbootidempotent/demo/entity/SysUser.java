@@ -1,5 +1,6 @@
 package com.savoidage.springbootidempotent.demo.entity;
 
+
 import lombok.Data;
 
 import java.io.Serializable;
