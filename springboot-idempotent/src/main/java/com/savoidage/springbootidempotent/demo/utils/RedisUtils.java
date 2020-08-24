@@ -84,13 +84,14 @@ public class RedisUtils {
      * @param key 指定键
      */
     @SuppressWarnings("unchecked")
-    public void remove(String key) {
+    public boolean remove(String key) {
         if(null == key){
-            return;
+            return false;
         }
         if (exists(key)) {
-            redisTemplate.delete(key);
+            return redisTemplate.delete(key);
         }
+        return false;
     }
 
     /**
@@ -168,61 +169,6 @@ public class RedisUtils {
     }
 
     /**
-     * 列表添加
-     * @param key 添加指定键
-     * @param value 添加指定值
-     */
-    @SuppressWarnings("unchecked")
-    public void lPush(String key, Object value){
-        if(null == key || null == value){
-            return;
-        }
-        ListOperations<String, Object> list = redisTemplate.opsForList();
-        list.rightPush(key,value);
-    }
-
-    /**
-     * 列表获取
-     * @param k 获取指定键
-     * @param l 值1
-     * @param l1 值2
-     * @return 返回获取的列表结果
-     */
-    @SuppressWarnings("unchecked")
-    public List<Object> lRange(String k, long l, long l1){
-        ListOperations<String, Object> list = redisTemplate.opsForList();
-        return list.range(k,l,l1);
-    }
-
-    /**
-     * 集合添加
-     * @param key 指定键
-     * @param value 对应的值
-     */
-    @SuppressWarnings("unchecked")
-    public void setArray(String key, Object value){
-        if(null == key || null == value){
-            return;
-        }
-        SetOperations<String, Object> set = redisTemplate.opsForSet();
-        set.add(key,value);
-    }
-
-    /**
-     * 集合获取
-     * @param key 获取集合的指定键
-     * @return 返回查询的集合
-     */
-    @SuppressWarnings("unchecked")
-    public Set<Object> getArray(String key){
-        if(null == key){
-            return null;
-        }
-        SetOperations<String, Object> set = redisTemplate.opsForSet();
-        return set.members(key);
-    }
-
-    /**
      * 设置已存入的键的过期时间
      * @param key 指定键
      * @param expire 过期时间
@@ -247,19 +193,4 @@ public class RedisUtils {
         }
         return redisTemplate.getExpire(key);
     }
-
-    /**
-     * 向redis中存入有序集合数据
-     * @param key 键
-     * @param tupleSet 有序集合数据
-     */
-    @SuppressWarnings("unchecked")
-    public void setAdd(final String key, final Set<ZSetOperations.TypedTuple<String>> tupleSet){
-        if(null == key){
-            return;
-        }
-        ZSetOperations<String,String> zSetOperations = redisTemplate.opsForZSet();
-        zSetOperations.add(key,tupleSet);
-    }
-
 }

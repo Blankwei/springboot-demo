@@ -1,5 +1,6 @@
 package com.savoidage.springbootidempotent.demo.controller;
 
+import com.savoidage.springbootidempotent.demo.annotation.ApiIdempotent;
 import com.savoidage.springbootidempotent.demo.entity.SysUser;
 import com.savoidage.springbootidempotent.demo.service.SysUserService;
 import com.savoidage.springbootidempotent.demo.utils.JsonUtils;
@@ -36,7 +37,7 @@ public class SysUserController {
             redisUtils.set("test", redisValue, 60L);
         }
         Object test = redisUtils.get("test");
-        return StringUtils.isEmpty(test) ? "nothing" : JsonUtils.jsonToObject(test.toString(), String.class);
+        return StringUtils.isEmpty(test) ? "nothing" : JsonUtils.objectToObject(test, String.class);
     }
 
     /**
@@ -66,6 +67,7 @@ public class SysUserController {
      * @param sysUser
      * @return
      */
+    @ApiIdempotent(nameValue = "/api/sysUser")
     @PostMapping(value = "/sysUser")
     public String saveSysUser(@RequestBody SysUser sysUser) {
         int insert = sysUserService.insert(sysUser);
