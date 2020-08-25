@@ -15,3 +15,5 @@
  
 ## springboot-distributedlock模块做分布式锁demo
 springboot 版本 2.1.16
+
+实现方式redis+注解+aop的方式 只需在需要锁的方法上增加注解即可 便于维护和拓展

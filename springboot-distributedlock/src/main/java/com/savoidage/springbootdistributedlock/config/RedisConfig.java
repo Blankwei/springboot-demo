@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -23,12 +23,13 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory connectionFactory) {
+    public RedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) {
         // 配置redisTemplate
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        RedisTemplate redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
-        // key序列化
+
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        // key序列化
         redisTemplate.setKeySerializer(stringRedisSerializer);
         // value序列化
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
@@ -42,14 +43,8 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisUtils getRedisUtils(LettuceConnectionFactory connectionFactory){
+    public RedisUtils getRedisUtils(RedisConnectionFactory connectionFactory){
         RedisTemplate redisTemplate = new StringRedisTemplate(connectionFactory);
         return new RedisUtils(redisTemplate);
-    }
-
-    @Bean
-    public RedisTemplate<?,?> getRedisTemplate(LettuceConnectionFactory connectionFactory){
-        RedisTemplate redisTemplate = new StringRedisTemplate(connectionFactory);
-        return redisTemplate;
     }
 }
