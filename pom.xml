@@ -21,6 +21,7 @@
 
     <modules>
         <module>springboot-idempotent</module>
+        <module>springboot-distributedlock</module>
     </modules>
 
     <properties>

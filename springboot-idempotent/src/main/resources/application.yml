@@ -41,9 +41,9 @@ spring:
 # 开启控制台的sql显示
 logging:
   level:
-    com.savoidage.springbootidempotent.demo: DEBUG
+    com.savoidage.springbootidempotent: DEBUG
 
 # mybatis配置
 mybatis:
-  mapper-locations: classpath*:com/savoidage/springbootidempotent/demo/mapper/*.xml
-  type-aliases-package: com.savoidage.springbootidempotent.demo.entity
+  mapper-locations: classpath*:com/savoidage/springbootidempotent/mapper/*.xml
+  type-aliases-package: com.savoidage.springbootidempotent.entity

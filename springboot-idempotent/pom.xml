@@ -9,7 +9,7 @@
         <version>1-0-0</version>
     </parent>
 
-    <groupId>com.savoidage.springbootidempotent.demo</groupId>
+    <groupId>com.savoidage.springbootidempotent</groupId>
     <artifactId>springboot-idempotent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-idempotent</name>
