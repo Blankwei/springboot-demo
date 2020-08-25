@@ -1,0 +1,17 @@
+
+server:
+  port: 9010
+
+project:
+  version: 1-0-0
+
+spring:
+  application:
+    name: springboot-distributedlock-${project.version}
+  messages:
+    encoding: utf-8
+  redis:
+    database: 2
+    host: 127.0.0.1
+    port: 6379
+    password:
