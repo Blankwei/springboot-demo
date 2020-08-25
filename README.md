@@ -1,4 +1,6 @@
 # 新版本springboot demo篇
+
+## springboot-idempotent模块做幂等性demo
  springboot 版本 2.3.3  
  mybatis 2.0.1  
  连接池：hikari
@@ -9,3 +11,7 @@
  2.注解+redis+aop  
  
  3.数据库唯一约束
+ 
+ 
+## springboot-distributedlock模块做分布式锁demo
+springboot 版本 2.1.16

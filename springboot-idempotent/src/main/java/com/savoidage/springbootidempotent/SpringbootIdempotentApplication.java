@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = "com.savoidage.springbootidempotent.demo.dao")
+@MapperScan(value = "com.savoidage.springbootidempotent.dao")
 public class SpringbootIdempotentApplication {
 
     public static void main(String[] args) {
