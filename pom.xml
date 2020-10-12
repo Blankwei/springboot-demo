@@ -15,6 +15,7 @@
     <modules>
         <module>springboot-idempotent</module>
         <module>springboot-distributedlock</module>
+        <module>springboot-distributedtransaction</module>
     </modules>
 
 </project>

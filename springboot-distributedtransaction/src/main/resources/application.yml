@@ -1,0 +1,50 @@
+
+server:
+  port: 9091
+
+project:
+  version: 1-0-0
+
+spring:
+  application:
+    name: springboot-distrubuted-transaction-${project.version}
+  messages:
+    encoding: utf-8
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_distributed_transaction?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    # Hikari 连接池配置
+    # 最小空闲连接数量
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password:
+
+# 开启控制台的sql显示
+logging:
+  level:
+    com.savoidage.springbootdistributedtransaction: DEBUG
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath*:com/savoidage/springbootdistributedtransaction/mapper/*.xml
+  type-aliases-package: com.savoidage.springbootdistributedtransaction.entity
