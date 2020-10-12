@@ -38,6 +38,35 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 50
+        max-wait: 2000ms
+        min-idle: 0
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    # 消息发送到交换机确认机制，是否返回回调
+    publisher-returns: true
+    # 设置发布确认模式：发布消息成功到交换器后会触发回调方法（必须配置这个才会回调 用于替代 publicsher-confirms）
+    publisher-confirm-type: correlated
+    listener:
+      simple:
+        # 限制每次发送一条数据
+        prefetch: 1
+        acknowledge-mode: manual
+        retry:
+          # 开启消费者重试
+          enabled: true
+          # 重试间隔时间ms
+          initial-interval: 3000ms
+          # 最大重试次数
+          max-attempts: 3
 
 # 开启控制台的sql显示
 logging:
