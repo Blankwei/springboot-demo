@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.savoidage.springbootidempotent</groupId>
+    <groupId>com.savoidage</groupId>
     <artifactId>springboot-idempotent</artifactId>
     <version>1-0-0</version>
     <name>springboot-idempotent</name>

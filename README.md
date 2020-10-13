@@ -22,3 +22,11 @@
     springboot 版本 2.3.3
     mybatis 2.0.1  
     连接池：hikari
+    
+## 4.springboot-distributeduidgenerate模块做分布式id生成器
+    springboot 版本 2.3.3
+    mybatis 2.0.1  
+    连接池：hikari
+### 百度的uidgenerator是基于雪花算法的，原生项目中使用基于数据库。
+### 本模块作为jar包被引用再其他项目中 
+   
