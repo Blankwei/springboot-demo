@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.savoidage.springbootdistributedtransaction.dao.OrderDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.savoidage.springbootdistributedtransaction.entity.Order">
+        <result column="order_id" property="orderId"/>
+        <result column="buyer_user_id" property="buyerUserId"/>
+        <result column="buyer_user_name" property="buyerUserName"/>
+        <result column="order_amount" property="orderAmount"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="pay_status" property="payStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `order_id`,
+        `buyer_user_id`,
+        `buyer_user_name`,
+        `order_amount`,
+        `order_status`,
+        `pay_status`,
+        `create_time`,
+        `update_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.orderId">
+        INSERT INTO order_info (
+            `order_id`,
+            `buyer_user_id`,
+            `buyer_user_name`,
+            `order_amount`,
+            `order_status`,
+            `pay_status`,
+            `create_time`,
+            `update_time`
+        ) VALUES (
+            #{pojo.orderId},
+            #{pojo.buyerUserId},
+            #{pojo.buyerUserName},
+            #{pojo.orderAmount},
+            #{pojo.orderStatus},
+            #{pojo.payStatus},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.orderId">
+        INSERT INTO order_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.orderId!=null"> `order_id`,</if>
+            <if test="pojo.buyerUserId!=null"> `buyer_user_id`,</if>
+            <if test="pojo.buyerUserName!=null"> `buyer_user_name`,</if>
+            <if test="pojo.orderAmount!=null"> `order_amount`,</if>
+            <if test="pojo.orderStatus!=null"> `order_status`,</if>
+            <if test="pojo.payStatus!=null"> `pay_status`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+            <if test="pojo.updateTime!=null"> `update_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.orderId!=null">#{pojo.orderId},</if>
+            <if test="pojo.buyerUserId!=null">#{pojo.buyerUserId},</if>
+            <if test="pojo.buyerUserName!=null">#{pojo.buyerUserName},</if>
+            <if test="pojo.orderAmount!=null">#{pojo.orderAmount},</if>
+            <if test="pojo.orderStatus!=null">#{pojo.orderStatus},</if>
+            <if test="pojo.payStatus!=null">#{pojo.payStatus},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+            <if test="pojo.updateTime!=null">#{pojo.updateTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO order_info (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.orderId},
+            #{pojo.buyerUserId},
+            #{pojo.buyerUserName},
+            #{pojo.orderAmount},
+            #{pojo.orderStatus},
+            #{pojo.payStatus},
+            #{pojo.createTime},
+            #{pojo.updateTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE order_info
+        <set>
+            <if test="pojo.orderId != null"> `order_id` = #{pojo.orderId}, </if>
+            <if test="pojo.buyerUserId != null"> `buyer_user_id` = #{pojo.buyerUserId}, </if>
+            <if test="pojo.buyerUserName != null"> `buyer_user_name` = #{pojo.buyerUserName}, </if>
+            <if test="pojo.orderAmount != null"> `order_amount` = #{pojo.orderAmount}, </if>
+            <if test="pojo.orderStatus != null"> `order_status` = #{pojo.orderStatus}, </if>
+            <if test="pojo.payStatus != null"> `pay_status` = #{pojo.payStatus}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime} </if>
+        </set>
+        WHERE order_id = #{pojo.orderId}
+    </update>
+</mapper>
+

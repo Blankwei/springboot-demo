@@ -34,17 +34,11 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
   redis:
-    database: 1
+    database: 3
     host: 127.0.0.1
     port: 6379
     password:
     timeout: 10000ms
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 50
-        max-wait: 2000ms
-        min-idle: 0
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -66,7 +60,7 @@ spring:
           # 重试间隔时间ms
           initial-interval: 3000ms
           # 最大重试次数
-          max-attempts: 3
+          max-attempts: 5
 
 # 开启控制台的sql显示
 logging:
@@ -75,5 +69,11 @@ logging:
 
 # mybatis配置
 mybatis:
-  mapper-locations: classpath*:com/savoidage/springbootdistributedtransaction/mapper/*.xml
+  mapper-locations: classpath*:mapper/**/*.xml
   type-aliases-package: com.savoidage.springbootdistributedtransaction.entity
+
+# 分布式id服务
+distributed:
+  uid:
+    application:
+      name: http://localhost:9092

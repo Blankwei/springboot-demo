@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Author: created by savoidage
  * CreateTime: 2020-10-12 11:21
- * Description: todo
+ * Description: 产品实体
  */
 @Data
 public class Product implements Serializable {

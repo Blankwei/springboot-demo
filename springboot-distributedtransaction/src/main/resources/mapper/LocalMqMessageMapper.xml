@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.savoidage.springbootdistributedtransaction.dao.LocalMqMessageDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.savoidage.springbootdistributedtransaction.entity.LocalMqMessage">
+        <result column="id" property="id"/>
+        <result column="message_type" property="messageType"/>
+        <result column="message_content" property="messageContent"/>
+        <result column="retry_count" property="retryCount"/>
+        <result column="status" property="status"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `message_type`,
+        `message_content`,
+        `retry_count`,
+        `status`,
+        `del_flag`,
+        `create_date`,
+        `update_date`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO local_mq_message (
+            `id`,
+            `message_type`,
+            `message_content`,
+            `retry_count`,
+            `status`,
+            `del_flag`,
+            `create_date`,
+            `update_date`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.messageType},
+            #{pojo.messageContent},
+            #{pojo.retryCount},
+            #{pojo.status},
+            #{pojo.delFlag},
+            #{pojo.createDate},
+            #{pojo.updateDate}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO local_mq_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.messageType!=null"> `message_type`,</if>
+            <if test="pojo.messageContent!=null"> `message_content`,</if>
+            <if test="pojo.retryCount!=null"> `retry_count`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.delFlag!=null"> `del_flag`,</if>
+            <if test="pojo.createDate!=null"> `create_date`,</if>
+            <if test="pojo.updateDate!=null"> `update_date`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.messageType!=null">#{pojo.messageType},</if>
+            <if test="pojo.messageContent!=null">#{pojo.messageContent},</if>
+            <if test="pojo.retryCount!=null">#{pojo.retryCount},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.delFlag!=null">#{pojo.delFlag},</if>
+            <if test="pojo.createDate!=null">#{pojo.createDate},</if>
+            <if test="pojo.updateDate!=null">#{pojo.updateDate},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO local_mq_message (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.messageType},
+            #{pojo.messageContent},
+            #{pojo.retryCount},
+            #{pojo.status},
+            #{pojo.delFlag},
+            #{pojo.createDate},
+            #{pojo.updateDate}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE local_mq_message
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.messageType != null"> `message_type` = #{pojo.messageType}, </if>
+            <if test="pojo.messageContent != null"> `message_content` = #{pojo.messageContent}, </if>
+            <if test="pojo.retryCount != null"> `retry_count` = #{pojo.retryCount}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.delFlag != null"> `del_flag` = #{pojo.delFlag}, </if>
+            <if test="pojo.createDate != null"> `create_date` = #{pojo.createDate}, </if>
+            <if test="pojo.updateDate != null"> `update_date` = #{pojo.updateDate} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

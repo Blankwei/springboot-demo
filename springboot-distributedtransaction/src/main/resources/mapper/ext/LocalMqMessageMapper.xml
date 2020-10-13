@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.savoidage.springbootdistributedtransaction.dao.LocalMqMessageDao">
+    <update id="updateLocalMqMessageById">
+        update
+            local_mq_message
+        set
+            status = 1,
+            update_date = now()
+        where
+            status = 0
+            and del_flag = false
+            and id = #{messageId}
+    </update>
+
+    <select id="findMessageList" resultMap="AllColumnMap">
+        select
+            <include refid="all_column"/>
+        from local_mq_message
+        where
+            status = 0
+            and del_flag = false
+            and message_type = 'order'
+    </select>
+
+    <update id="updateMessageToFailed">
+        update
+            local_mq_message
+        set
+            status = 2,
+            update_date = now()
+        where
+            del_flag = false
+            and id = #{messageId}
+    </update>
+
+    <update id="updateMessageRetryCount">
+        update
+            local_mq_message
+        set
+            retry_count = retry_count + 1,
+            update_date = now()
+        where
+            del_flag = false
+            and id = #{messageId}
+    </update>
+
+    <select id="findById" resultMap="AllColumnMap">
+        select <include refid="all_column"/> from local_mq_message where id = #{messageId} and del_flag = false
+    </select>
+</mapper>
+

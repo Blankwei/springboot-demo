@@ -9,24 +9,48 @@ import java.util.Date;
 /**
  * Author: created by savoidage
  * CreateTime: 2020-10-12 11:21
- * Description: todo
+ * Description: 订单实体
  */
 @Data
 public class Order implements Serializable {
 
-    private Integer orderId; // 订单id
+    /**
+     * 订单id
+     */
+    private Long orderId;
 
-    private Integer buyerUserId; // 买家id
+    /**
+     * 买家id
+     */
+    private Integer buyerUserId;
 
-    private String buyerUserName; // 买家名称
+    /**
+     * 买家名称
+     */
+    private String buyerUserName;
 
-    private BigDecimal orderAmount; // 订单金额
+    /**
+     * 订单金额
+     */
+    private BigDecimal orderAmount;
 
-    private Integer orderStatus; // 订单状态
+    /**
+     * 订单状态
+     */
+    private Integer orderStatus;
 
-    private Integer payStatus; // 支付状态
+    /**
+     * 支付状态
+     */
+    private Integer payStatus;
 
-    private Date createTime; // 创建时间
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
-    private Date updateTime; // 更新时间
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 }

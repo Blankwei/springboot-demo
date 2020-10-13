@@ -1,6 +1,7 @@
 package com.savoidage.springbootdistributeduidgenerate.service;
 
 import com.baidu.fsg.uid.UidGenerator;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
  * Description: UidService
  */
 @Service("uidService")
+@Component
 public class UidService {
 
     @Resource
